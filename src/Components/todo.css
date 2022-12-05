@@ -40,14 +40,29 @@
 .todo_container .each_child_container .checkBox_text {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 .todo_container .each_child_container .checkBox_text .checkBox {
   cursor: pointer;
+}
+.todo_container .each_child_container .checkBox_text .editing_input {
+  border: 0;
+  border-bottom: 1px solid rgb(169, 165, 165);
+  outline: none;
+  min-width: 100%;
 }
 .todo_container .each_child_container .delete_edit {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.todo_container .each_child_container .delete_edit .save_edit_btn {
+  background-color: rgb(55, 107, 55);
+  height: 25px;
+  cursor: pointer;
+  border: 0;
+  color: white;
+  font-weight: bold;
 }
 .todo_container .each_child_container .delete_edit .edit_btn {
   background-color: coral;

@@ -4,7 +4,8 @@ import { useState } from "react";
 function Todo() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-
+  const [editedTodoId, setEditedTodoId] = useState(null);
+  const [editTodo, setEditTodo] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     if (todo) {
@@ -20,7 +21,23 @@ function Todo() {
   const removeAllItems = () => {
     setTodos([]);
   };
-  
+
+  const handleCheckItem = (id) => {
+    const checkedItem = todos.map((element) =>
+      element.id === id ? { ...element, checked: !element.checked } : element
+    );
+    setTodos(checkedItem);
+  };
+  const handleSaveEdit = (id) => {
+    if (editTodo) {
+      const editedElement = todos.map((element) =>
+        element.id === id ? { ...element, text: editTodo } : element
+      );
+      setTodos(editedElement);
+      setEditedTodoId(null);
+      editTodo("");
+    }
+  };
   return (
     <div className="todo_container">
       <form action="">
@@ -38,18 +55,61 @@ function Todo() {
       </form>
       {todos.map((element) => {
         return (
-          <div className="each_child_container" key={element.id}>
+          <div
+            style={
+              element.checked
+                ? { backgroundColor: "#467352", color: "white" }
+                : null
+            }
+            className="each_child_container"
+            key={element.id}
+          >
             <div className="checkBox_text">
-              <input className="checkBox" type="checkbox" />
-              <p>{element.text}</p>
+              {editedTodoId === element.id ? (
+                <input
+                  type="text"
+                  onChange={(e) => setEditTodo(e.target.value)}
+                  value={editTodo}
+                  className='editing_input'
+                />
+              ) : (
+                <>
+                  {" "}
+                  <input
+                    checked={element.checked}
+                    onClick={() => handleCheckItem(element.id)}
+                    className="checkBox"
+                    type="checkbox"
+                  />
+                  <p>{element.text}</p>
+                </>
+              )}
             </div>
             <div className="delete_edit">
-              <button className="edit_btn">Edit</button>
+              <button
+                onClick={() => setEditedTodoId(element.id)}
+                style={
+                  editedTodoId === element.id || element.checked
+                    ? { display: "none" }
+                    : null
+                }
+                className="edit_btn"
+              >
+                Edit
+              </button>
               <button
                 onClick={() => handleDelete(element.id)}
                 className="delete_btn"
               >
                 Delete
+              </button>
+
+              <button
+                className="save_edit_btn"
+                style={editedTodoId !== element.id ? { display: "none" } : null}
+                onClick={() => handleSaveEdit(element.id)}
+              >
+                Save Edit
               </button>
             </div>
           </div>
