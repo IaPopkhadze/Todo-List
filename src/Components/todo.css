@@ -1,1 +1,80 @@
-/*# sourceMappingURL=todo.css.map */
+.todo_container {
+  margin: 3rem auto;
+  min-width: 50%;
+  max-width: 70%;
+  min-height: 500px;
+  box-shadow: 0 0 6px 0px rgb(103, 101, 101);
+  position: relative;
+}
+.todo_container form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  gap: 0.5rem;
+}
+.todo_container form .myInput {
+  width: 300px;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid black;
+}
+.todo_container form .submit_btn {
+  width: 100px;
+  height: 30px;
+  background-color: black;
+  color: whitesmoke;
+  cursor: pointer;
+}
+.todo_container .each_child_container {
+  margin: 1rem auto;
+  width: 90%;
+  height: 50px;
+  box-shadow: 0 0 2px 1px rgb(186, 182, 182);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+.todo_container .each_child_container .checkBox_text {
+  display: flex;
+  align-items: center;
+}
+.todo_container .each_child_container .checkBox_text .checkBox {
+  cursor: pointer;
+}
+.todo_container .each_child_container .delete_edit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.todo_container .each_child_container .delete_edit .edit_btn {
+  background-color: coral;
+  border: 0;
+  width: 60px;
+  height: 25px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.todo_container .each_child_container .delete_edit .delete_btn {
+  background-color: crimson;
+  border: 0;
+  width: 60px;
+  height: 25px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.todo_container .delete_all_item {
+  position: absolute;
+  bottom: 1rem;
+  right: 5%;
+  background-color: crimson;
+  border: 0;
+  padding: 0.5rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}/*# sourceMappingURL=todo.css.map */
