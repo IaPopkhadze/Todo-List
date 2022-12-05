@@ -12,6 +12,15 @@ function Todo() {
       setTodo("");
     }
   };
+
+  const handleDelete = (id) => {
+    const deleteItem = todos.filter((element) => element.id !== id);
+    setTodos(deleteItem);
+  };
+  const removeAllItems = () => {
+    setTodos([]);
+  };
+  
   return (
     <div className="todo_container">
       <form action="">
@@ -36,12 +45,21 @@ function Todo() {
             </div>
             <div className="delete_edit">
               <button className="edit_btn">Edit</button>
-              <button className="delete_btn">Delete</button>
+              <button
+                onClick={() => handleDelete(element.id)}
+                className="delete_btn"
+              >
+                Delete
+              </button>
             </div>
           </div>
         );
       })}
-      <button className="delete_all_item">Delete All Item</button>
+      {todos.length ? (
+        <button onClick={removeAllItems} className="delete_all_item">
+          Delete All Item
+        </button>
+      ) : null}
     </div>
   );
 }
